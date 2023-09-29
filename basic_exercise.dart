@@ -78,3 +78,18 @@ String? palindromecheck(String? originalstr){
     print("The word ${originalstr} is not a palindrome");
   }
 }
+}
+// Leap year checker
+// void main(){
+//   int year=2000;
+//   if ((year%4==0) & (year%100!=0)){
+//     print("The given year is a leap year");
+//   }
+//   else if((year%100==0)&(year%400==0)){
+//     print("The given year is a leap year");
+    
+//   }
+//   else{
+//     print("The given year is NOT a leap year");
+//   }
+// }
