@@ -1,9 +1,5 @@
-Certainly! Here are some notes covering functions, loops, control flow, print statements, operators, and constructors in Dart:
-
 ### Functions:
-- **Definition:**
-
-  returnType functionName(parameters) {
+returnType functionName(parameters) {
     // Function body
   }
 
@@ -76,17 +72,16 @@ Certainly! Here are some notes covering functions, loops, control flow, print st
    - A class is a blueprint for creating objects.
    - Dart supports both named and anonymous classes.
 
-   ```dart
+  
    class MyClass {
      // Class members and methods go here
    }
-   ```
+  
 
 2. **Attributes (Fields):**
    - Attributes represent the state of an object.
    - Use `var` or specify the data type.
 
-   ```dart
    class Person {
      String name;
      int age;
@@ -94,18 +89,18 @@ Certainly! Here are some notes covering functions, loops, control flow, print st
      // Constructor
      Person(this.name, this.age);
    }
-   ```
+  
 
 3. **Methods:**
    - Methods define the behavior of an object.
 
-   ```dart
+ 
    class Dog {
      void bark() {
        print("Woof! Woof!");
      }
    }
-   ```
+   
 
 4. **Constructors:**
    - Constructors initialize the attributes when an object is created.
