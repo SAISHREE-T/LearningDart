@@ -1,0 +1,210 @@
+Private Variables:
+variables that are private to a file.
+represented by-
+_<nameofvariable>
+
+In Dart, getters and setters are used to control access to the properties (variables) of a class.
+While getters are primarily used to retrieve the values of private variables, setters allow you to update or modify the values of those variables.
+
+1. **Getters:**
+   - **Read-only Access:** Getters are commonly used for providing read-only access to private variables. By using a getter, you can expose the value of a variable without allowing direct access to the variable itself.
+   - **Computed Properties:** Getters can also be used to compute and return a value based on other properties or calculations. This allows you to present a derived or calculated value without exposing the underlying details.
+
+   ```dart
+   class Circle {
+     double _radius;
+
+     Circle(this._radius);
+
+     // Getter for read-only access to radius
+     double get radius => _radius;
+
+     // Getter for computed property: area
+     double get area => 3.14 * _radius * _radius;
+   }
+
+   void main() {
+     var myCircle = Circle(5.0);
+     print(myCircle.radius); // Accessing through getter
+     print(myCircle.area);   // Computed property through getter
+   }
+   ```
+
+2. **Setters:**
+   - **Write Access Control:** Setters are used to control the modification of private variables. By using a setter, you can enforce certain rules or validations before allowing a variable to be updated.
+   - **Encapsulation:** Setters enable encapsulation by providing a controlled interface for modifying the state of an object. This allows the class to maintain control over its internal state.
+
+
+   class Temperature {
+     double _celsius;
+
+     Temperature(this._celsius);
+
+     // Getter for read-only access to celsius
+     double get celsius => _celsius;
+
+     // Setter with validation for updating celsius
+     set celsius(double value) {
+       if (value < -273.15) {
+         throw ArgumentError('Temperature cannot be less than -273.15 Celsius.');
+       }
+       _celsius = value;
+     }
+   }
+
+   void main() {
+     var currentTemperature = Temperature(25.0);
+     print(currentTemperature.celsius); // Accessing through getter
+
+     // Updating temperature through setter
+     currentTemperature.celsius = 30.0;
+     print(currentTemperature.celsius);
+   }
+
+
+In summary, getters and setters in Dart help in achieving encapsulation and providing controlled access to the internal state of a class.
+Getters are used for read-only access and computed properties, while setters are used for controlling write access and enforcing rules during updates.
+This helps in creating more maintainable and secure code by encapsulating the internal details of a class.
+they are complementory to each other.
+
+
+So, how is a getter without a setter different from "final"?
+Using final properties directly simplifies the code and achieves a similar effect to using getters without setters.
+However, there are scenarios where using getters without setters provides more flexibility. 
+
+Why use a combination of a setter and getter, why not a private variable?
+one reason to use a combination of getters and setters instead of just a private variable is about encapsulation and control over access, especially when it comes to maintaining a class's internal state
+
+### What is Encapsulation?
+**Encapsulation is like putting things in a box and controlling how they are used.**
+
+Imagine you have a box (let's call it a class), and inside this box, you have some important stuff (let's call them variables or properties). 
+Now, you want to make sure that people outside the box (other parts of your program) can't just mess with your stuff directly. You want them to interact with your stuff in a controlled way.
+Here's where encapsulation comes in:
+
+1. **Private Variables:** You can declare your stuff as private, which means it's not directly accessible from outside the box. It's like having a secret compartment inside the box.
+
+2. **Getters and Setters:** But sometimes, you want to let people know what's in your secret compartment (getting the value). 
+However, you still don't want them to put something crazy in there (setting the value).
+So, you create a special way for them to look inside (getter) and a special way for them to put something in (setter). These are like windows on your box with specific rules for using them.
+
+So, in a nutshell:
+
+- **Encapsulation is about hiding the complexity and details of how something works inside a box.**
+- **Private variables keep the inside stuff safe.**
+- **Getters and setters provide controlled ways to interact with the inside stuff.**
+
+In programming, this helps you write more organized and maintainable code because you can change what's inside the box (inside the class) without affecting how the rest of the program uses it.
+
+ 
+### Inheritance in Dart:
+  - Inheritance is a mechanism in object-oriented programming that allows a class (subclass/derived class) to inherit properties and behaviors from another class (superclass/base class).
+
+  class SuperClass {
+    // Superclass members and methods
+  }
+
+  class SubClass extends SuperClass {
+    // Subclass members and methods
+  }
+##Some important keywords and annotations.
+
+### `extends` Keyword:
+
+  - The `extends` keyword is used to indicate that a class is inheriting from another class.
+
+  
+  class Animal {
+    // Superclass
+  }
+
+  class Dog extends Animal {
+    // Subclass
+  }
+  
+
+### `implements` Keyword: (I call it the ditto inheritance, since the child must have all the propertise of the parent!)
+
+  - The `implements` keyword is used to implement interfaces in Dart.
+
+class Flyable {
+    void fly() {
+      print("Flying...");
+    }
+  }
+
+  class Bird implements Flyable {
+    @override
+    void fly() {
+      print("Bird flying...");
+    }
+  }
+ 
+
+### `super` Keyword:
+  - The `super` keyword is used to refer to the superclass.  (It is used to modify the contents of the parent class with in the child class.)
+
+ 
+  class Animal {
+    void makeSound() {
+      print("Some generic sound");
+    }
+  }
+
+  class Cat extends Animal {
+    @override
+    void makeSound() {
+      super.makeSound(); // Calls the makeSound method of the parent class
+      print("Meow!");
+    }
+  }
+ 
+
+### `@override` Annotation:
+
+  - The `@override` annotation is used to indicate that a method in a subclass is intended to override a method in the superclass.
+Same as the prv example.
+
+### `as` Keyword:
+
+  - The `as` keyword is used for type casting.
+
+  class Animal {
+    void eat() {
+      print("Animal eating");
+    }
+  }
+
+  class Dog extends Animal {
+    void bark() {
+      print("Woof! Woof!");
+    }
+  }
+
+  void main() {
+    Animal myDog = Dog();
+    (myDog as Dog).bark(); // Using 'as' for type casting
+  }
+  
+
+These concepts play a crucial role in building flexible and modular code in Dart. Inheritance allows code reuse and supports the creation of hierarchies of related classes.
+Interfaces, `super`, `@override`, and `as` provide additional tools for building efficient and expressive object-oriented programs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
